@@ -6,29 +6,58 @@ public class PlayerMovement : MonoBehaviour
 {
     public float gravityForce;
     public float movementSpeed;
-
+    
+    
     private ContactPoint2D[] contactPoints = new ContactPoint2D[16];
 
-    private Vector2 platformNormal;
+    public Vector2 platformNormal { get; private set; }
 
-    private bool grounded;
+    public bool grounded;
     private Rigidbody2D rigid;
+    public bool canBeControlled = true;
 
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         Physics2D.gravity = Vector2.down * gravityForce;
+        platformNormal = Vector2.up;
     }
 
     private void FixedUpdate()
     {
-        if (grounded)
+        if (grounded && canBeControlled)
         {
             Physics2D.gravity = -platformNormal * gravityForce;
 
             var h = Input.GetAxis("Horizontal");
             var tangent = new Vector2(platformNormal.y, -platformNormal.x);
-            rigid.MovePosition(rigid.position + h * tangent * movementSpeed * Time.deltaTime);
+            if (h != 0)
+                MoveLocked(h * tangent * movementSpeed * Time.deltaTime);
+        }
+    }
+
+    private void MoveLocked(Vector2 movement)
+    {
+        RaycastHit2D[] raycastHits = new RaycastHit2D[16];
+        int count = rigid.Cast(movement, raycastHits, movement.magnitude);
+
+        rigid.MovePosition(rigid.position + movement);
+        //transform.Translate(movement);
+
+        //Correct movement on the edges
+        if (count == 0 && grounded)
+        {
+            count = rigid.Cast(Physics2D.gravity, raycastHits, Physics2D.gravity.magnitude * Time.deltaTime);
+            if (count > 0)
+            {
+                if (raycastHits[0].distance < 0.01f)
+                    return;
+
+                print(raycastHits[0].distance);
+
+                var newMovement = raycastHits[0].distance * Physics2D.gravity.normalized;
+                transform.Translate(newMovement);
+            }
         }
     }
 
@@ -42,8 +71,7 @@ public class PlayerMovement : MonoBehaviour
                 var newNormal = collision.GetContact(i).normal;
 
                 //TODO check grounded and stuff
-                if (platformNormal == Vector2.zero ||
-                    Vector2.Dot(platformNormal, newNormal) > 0.9f)  //FIXME
+                if (!grounded || Vector2.Dot(platformNormal, newNormal) > 0.9f)  //FIXME how well normals align
                 {
                     Debug.DrawRay(collision.GetContact(i).point, newNormal, Color.red);
 
