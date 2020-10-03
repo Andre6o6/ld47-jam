@@ -6,7 +6,7 @@ public class Platform : MonoBehaviour
 {
     public Animator anim;
 
-    private void Start()
+    protected virtual void Start()
     {
         anim = GetComponent<Animator>();
 
