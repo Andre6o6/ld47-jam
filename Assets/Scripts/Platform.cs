@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Animator anim;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        anim = GetComponent<Animator>();
+
+        if (!NextLvlTransition.restarted)
+        {
+            anim.SetTrigger("Create");
+        }
     }
 }

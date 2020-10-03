@@ -57,8 +57,6 @@ public class PlayerMovement : MonoBehaviour
                 if (raycastHits[0].distance < 0.01f)
                     return;
 
-                print(raycastHits[0].distance);
-
                 var newMovement = raycastHits[0].distance * Physics2D.gravity.normalized;
                 transform.Translate(newMovement);
             }
@@ -93,5 +91,11 @@ public class PlayerMovement : MonoBehaviour
         {
             grounded = false;
         }
+    }
+
+    public void SetGravity(Vector2 direction)
+    {
+        platformNormal = -direction.normalized;
+        Physics2D.gravity = -platformNormal * gravityForce;
     }
 }
