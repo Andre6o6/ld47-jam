@@ -21,6 +21,10 @@ public class PlayerMovement : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         Physics2D.gravity = Vector2.down * gravityForce;
         platformNormal = Vector2.up;
+
+        //Instead of destroying, warp to a start position
+        //or throw there with gravity 
+        DontDestroyOnLoad(this);
     }
 
     private void FixedUpdate()
