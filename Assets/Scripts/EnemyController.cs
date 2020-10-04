@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public Transform target;
+    private PlayerMovement target;
     public LayerMask obstacleMask;
 
     public Vector2 gravity;
@@ -12,10 +12,11 @@ public class EnemyController : MonoBehaviour
     public float movementSpeed;
 
     public Vector2 localVelocity;
+    private Vector2 velocity;
 
     private ContactPoint2D[] contactPoints = new ContactPoint2D[16];
     private RaycastHit2D[] raycastHits = new RaycastHit2D[16];
-    private GameObject platform;
+    public GameObject platform;
 
     public Vector2 platformNormal;
 
@@ -32,19 +33,22 @@ public class EnemyController : MonoBehaviour
         gravity = Vector2.down * gravityForce;
         platformNormal = Vector2.up;
 
+        target = FindObjectOfType<PlayerMovement>();
+
         height = GetComponent<Collider2D>().bounds.extents.y - 0.05f;
     }
 
     private void Update()
     {
-        if (target == null)
+        if (target == null || !target.enabled)
         {
             //animator
             //Destroy(script)
+            return;
         }
 
         Vector2 origin = (Vector2)transform.position - platformNormal * height;
-        Vector2 direction = (Vector2)target.position - origin;
+        Vector2 direction = (Vector2)target.transform.position - origin;
 
         Debug.DrawRay(origin, direction);
 
@@ -53,15 +57,19 @@ public class EnemyController : MonoBehaviour
         {
             if (!lockedIntoMovement || localVelocity.x == 0)
             {
-                lockedIntoMovement = true;
+                //int sign = (target.platform == platform && Vector2.Dot(target.platformNormal, platformNormal) == -1) ? -1 : 1;
+                int sign = 1;
+
                 if (Vector2.SignedAngle(-platformNormal, direction) > 0)
                 {
-                    localVelocity.x = movementSpeed;
+                    localVelocity.x = sign * movementSpeed;
                 }
                 else
                 {
-                    localVelocity.x = -movementSpeed;
+                    localVelocity.x = -sign * movementSpeed;
                 }
+
+                lockedIntoMovement = true;
                 StartCoroutine(UnlockMovement());
             }
         }
@@ -79,7 +87,7 @@ public class EnemyController : MonoBehaviour
         else
         {
             if (canBeControlled && grounded)
-                GetComponent<EnemyLeap>().Leap(target);
+                GetComponent<EnemyLeap>().Leap(target.transform);
 
             localVelocity.x = 0;
         }
@@ -96,12 +104,14 @@ public class EnemyController : MonoBehaviour
                 gravity = -platformNormal * gravityForce;
 
                 var tangent = new Vector2(platformNormal.y, -platformNormal.x);
-                MoveLocked(localVelocity.x * tangent * Time.deltaTime + localVelocity.y * platformNormal * Time.deltaTime);
+                velocity = localVelocity.x * tangent + localVelocity.y * platformNormal;
+                MoveLocked(velocity * Time.deltaTime);
             }
             else
             {
                 var tangent = new Vector2(platformNormal.y, -platformNormal.x);
-                Move(localVelocity.x * tangent * Time.deltaTime + localVelocity.y * platformNormal * Time.deltaTime);
+                velocity = localVelocity.x * tangent + localVelocity.y * platformNormal;
+                Move(velocity * Time.deltaTime);
             }
         }
 
@@ -115,8 +125,8 @@ public class EnemyController : MonoBehaviour
     {
         int count = rigid.Cast(movement, raycastHits, movement.magnitude);
 
-        rigid.MovePosition(rigid.position + movement);
-        //transform.Translate(movement);
+        //rigid.MovePosition(rigid.position + movement);
+        transform.Translate(movement);
 
         //Correct movement on the edges
         if (count == 0 && grounded)
@@ -163,6 +173,16 @@ public class EnemyController : MonoBehaviour
                     platformNormal = newNormal;
                     platform = collision.gameObject;
                     break;
+                }
+
+                //If walking into wall
+                if (Vector2.Dot(velocity, newNormal) < -0.9f)
+                {
+                    platformNormal = newNormal;
+                    platform = collision.gameObject;
+
+                    var tangent = new Vector2(platformNormal.y, -platformNormal.x);
+                    velocity = localVelocity.x * tangent + localVelocity.y * platformNormal;
                 }
             }
             grounded = true;

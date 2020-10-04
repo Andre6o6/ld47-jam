@@ -8,6 +8,8 @@ public class Killbox : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
+            collision.GetComponent<Animator>()?.SetTrigger("Die");
+
             FindObjectOfType<NextLvlTransition>().RestartLvl();
         }
     }

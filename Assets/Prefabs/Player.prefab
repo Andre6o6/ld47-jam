@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1268746396}
   m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -88,6 +88,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravityForce: 20
   movementSpeed: 4
+  platform: {fileID: 0}
   grounded: 0
   canBeControlled: 0
 --- !u!114 &9010945001847451666
@@ -102,7 +103,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d7a307ee9d5c1246b8ace4f45668c6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 10
+  minJumpForce: 5
+  maxJumpForce: 10
   speedInAir: 4
   accelerationTime: 0.1
 --- !u!95 &1268746395
@@ -206,7 +208,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 6983202077367773121, guid: 115443efcf9ef6b469800b136b53e03f,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

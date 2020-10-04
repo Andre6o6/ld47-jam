@@ -62,11 +62,9 @@ public class PlayerJump : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        print(normalProj);
-
         if (!player.canBeControlled && 
-            lastPlatform != null && 
-            collision.gameObject != lastPlatform)
+            ((collision.gameObject != lastPlatform && Cristal.cristalCount > 0) || 
+            (collision.gameObject.tag == "Base" && Cristal.cristalCount == 0)))     //HACK for next lvl transition 
         {
             rigid.velocity = Vector2.zero;
             player.canBeControlled = true;

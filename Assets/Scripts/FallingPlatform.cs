@@ -34,6 +34,8 @@ public class FallingPlatform : Platform
         {
             if (!falling)
             {
+                collision.transform.SetParent(this.transform);
+
                 falling = true;
 
                 //var player = collision.gameObject.GetComponent<PlayerMovement>();
@@ -45,8 +47,19 @@ public class FallingPlatform : Platform
         }
         else if(collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
         {
-            anim.SetTrigger("Destroy");
-            StartCoroutine(Recreate());
+            if (falling)
+            {
+                anim.SetTrigger("Destroy");
+                StartCoroutine(Recreate());
+            }
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            collision.transform.SetParent(null);
         }
     }
 

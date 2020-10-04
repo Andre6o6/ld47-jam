@@ -9,6 +9,7 @@ public class NextLvlTransition : MonoBehaviour
 
     public Vector2 spawnPosition;
     public string nextLvl;
+    public float restartTime = 2;
 
     private bool loading;
     private PlayerMovement player;
@@ -20,7 +21,7 @@ public class NextLvlTransition : MonoBehaviour
 
         player = FindObjectOfType<PlayerMovement>();
         //HACK jump a litle to be able to fire OnCollisionEnter
-        player.GetComponent<Rigidbody2D>().velocity += 1 * player.platformNormal.normalized;
+        player.GetComponent<Rigidbody2D>().velocity += 2 * player.platformNormal.normalized;
         player.SetGravity(spawnPosition - (Vector2)player.transform.position);
         player.canBeControlled = false;
 
@@ -52,12 +53,22 @@ public class NextLvlTransition : MonoBehaviour
 
     public void RestartLvl()
     {
-        Cristal.cristalCount = 0;
+        player = FindObjectOfType<PlayerMovement>();
+        player.enabled= false;
+        player.GetComponent<PlayerJump>().enabled = false;
+        player.GetComponent<Rigidbody2D>().gravityScale = 0;
 
-        var player = FindObjectOfType<PlayerMovement>();
+        StartCoroutine(RestartAfterTime());
+    }
+
+    private IEnumerator RestartAfterTime()
+    {
+        yield return new WaitForSeconds(restartTime);
+
+        Cristal.cristalCount = 0;
+        restarted = true;
         Destroy(player.gameObject);
 
-        restarted = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

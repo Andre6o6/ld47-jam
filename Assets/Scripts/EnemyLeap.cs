@@ -10,6 +10,8 @@ public class EnemyLeap : MonoBehaviour
     private EnemyController enemy;
     private Rigidbody2D rigid;
 
+    private GameObject lastPlatform;
+
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -20,6 +22,8 @@ public class EnemyLeap : MonoBehaviour
     {
         enemy.canBeControlled = false;
         enemy.transform.Translate(enemy.platformNormal * 0.5f);
+        lastPlatform = enemy.platform;
+
         StartCoroutine(LeapAfterTime(target));
     }
 
@@ -36,6 +40,20 @@ public class EnemyLeap : MonoBehaviour
         enemy.canBeControlled = true;
         enemy.localVelocity = Vector2.zero;
         rigid.velocity = Vector2.zero;
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (!enemy.canBeControlled)
+        {
+            if (collision.gameObject != lastPlatform)
+            {
+
+                enemy.canBeControlled = true;
+                enemy.localVelocity = Vector2.zero;
+                rigid.velocity = Vector2.zero;
+            }
+        }
     }
 
     //OnTriggerEnter in killbox? Destroy? respawn after time?

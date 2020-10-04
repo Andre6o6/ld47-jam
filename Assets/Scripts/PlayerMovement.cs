@@ -24,13 +24,17 @@ public class PlayerMovement : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        rigid = GetComponent<Rigidbody2D>();
-        Physics2D.gravity = Vector2.down * gravityForce;
-        platformNormal = Vector2.up;
-
         //Instead of destroying, warp to a start position
         //or throw there with gravity 
         DontDestroyOnLoad(this);
+
+        rigid = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start()
+    {
+        Physics2D.gravity = Vector2.down * gravityForce;
+        platformNormal = Vector2.up;
     }
 
     private void FixedUpdate()
@@ -51,8 +55,8 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit2D[] raycastHits = new RaycastHit2D[16];
         int count = rigid.Cast(movement, raycastHits, movement.magnitude);
 
-        rigid.MovePosition(rigid.position + movement);
-        //transform.Translate(movement);
+        //rigid.MovePosition(rigid.position + movement);
+        transform.Translate(movement);
 
         //Correct movement on the edges
         if (count == 0 && grounded)
@@ -102,7 +106,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void SetGravity(Vector2 direction)
     {
+        //platformNormal = -rigid.velocity.normalized;
         platformNormal = -direction.normalized;
-        Physics2D.gravity = -platformNormal * gravityForce;
+        Physics2D.gravity = direction.normalized * gravityForce;
     }
 }

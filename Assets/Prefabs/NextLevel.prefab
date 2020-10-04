@@ -44,4 +44,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPosition: {x: 0, y: 0.29}
-  nextLvl: 1
+  nextLvl: 10
+  restartTime: 1.5
