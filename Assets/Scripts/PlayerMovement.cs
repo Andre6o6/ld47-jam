@@ -7,10 +7,10 @@ public class PlayerMovement : MonoBehaviour
     public float gravityForce;
     public float movementSpeed;
     
-    
     private ContactPoint2D[] contactPoints = new ContactPoint2D[16];
 
     public Vector2 platformNormal { get; private set; }
+    public GameObject platform;
 
     public bool grounded;
     private Rigidbody2D rigid;
@@ -18,6 +18,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        var playerObjs = FindObjectsOfType<PlayerMovement>();
+        if (playerObjs.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
+
         rigid = GetComponent<Rigidbody2D>();
         Physics2D.gravity = Vector2.down * gravityForce;
         platformNormal = Vector2.up;
@@ -77,6 +83,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     Debug.DrawRay(collision.GetContact(i).point, newNormal, Color.red);
 
+                    platform = collision.gameObject;
                     platformNormal = newNormal;
                     break;
                 }

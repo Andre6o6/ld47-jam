@@ -19,6 +19,8 @@ public class NextLvlTransition : MonoBehaviour
         restarted = false;
 
         player = FindObjectOfType<PlayerMovement>();
+        //HACK jump a litle to be able to fire OnCollisionEnter
+        player.GetComponent<Rigidbody2D>().velocity += 1 * player.platformNormal.normalized;
         player.SetGravity(spawnPosition - (Vector2)player.transform.position);
         player.canBeControlled = false;
 
@@ -42,6 +44,7 @@ public class NextLvlTransition : MonoBehaviour
             else
             {
                 loading = false;
+                SceneManager.LoadScene(nextLvl);
                 print("Loaded");
             }
         }
