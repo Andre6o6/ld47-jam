@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerJump : MonoBehaviour
 {
-    public float jumpForce;
+    public float minJumpForce;
+    public float maxJumpForce;
     public float speedInAir;
     public float accelerationTime;
 
@@ -27,7 +28,7 @@ public class PlayerJump : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && player.grounded)
         {
             player.canBeControlled = false;
-            rigid.velocity = player.platformNormal * jumpForce;
+            rigid.velocity = player.platformNormal * maxJumpForce;
             lastPlatform = player.platform;
         }
 
@@ -41,6 +42,11 @@ public class PlayerJump : MonoBehaviour
 
             var smoothTangentVelocity = Mathf.SmoothDamp(tangentProj, h * speedInAir, ref currentVelocityX, accelerationTime);
             rigid.velocity = normalProj * player.platformNormal + smoothTangentVelocity * tangent;
+
+            if (Input.GetKeyUp(KeyCode.Space) && normalProj > minJumpForce)
+            {
+                rigid.velocity = minJumpForce * player.platformNormal + smoothTangentVelocity * tangent;
+            }
         }
     }
 
