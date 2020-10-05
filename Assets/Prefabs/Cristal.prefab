@@ -9678,6 +9678,7 @@ GameObject:
   - component: {fileID: 4589681589851401514}
   - component: {fileID: 4589681589851401515}
   - component: {fileID: 4589681589851400917}
+  - component: {fileID: 1685056054984676661}
   m_Layer: 10
   m_Name: Cristal
   m_TagString: Untagged
@@ -9742,6 +9743,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectParticles: {fileID: 1107229884}
   audiosource: {fileID: 2131034745}
+--- !u!95 &1685056054984676661
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4589681589851401512}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e42300a3ea7292244bbec83d4958f01a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4589681590729635143
 GameObject:
   m_ObjectHideFlags: 0
@@ -9813,7 +9833,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c69aa95acd1f74f44b2d4db2709c6330, type: 3}
-  m_Color: {r: 0.9622642, g: 0.17702031, b: 0.7764078, a: 1}
+  m_Color: {r: 0.9339623, g: 0.2775454, b: 0.777891, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

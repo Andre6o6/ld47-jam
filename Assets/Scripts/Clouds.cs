@@ -15,6 +15,12 @@ public class Clouds : MonoBehaviour
 
     private IEnumerator Start()
     {
+        var objs = FindObjectsOfType<Clouds>();
+        if (objs.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
+
         DontDestroyOnLoad(this);
 
         while (true)

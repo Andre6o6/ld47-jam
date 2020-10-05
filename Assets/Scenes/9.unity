@@ -392,6 +392,7 @@ GameObject:
   - component: {fileID: 492364492}
   - component: {fileID: 492364491}
   - component: {fileID: 492364490}
+  - component: {fileID: 492364494}
   m_Layer: 11
   m_Name: Killbox in case player inside (1)
   m_TagString: Untagged
@@ -502,6 +503,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &492364494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492364489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a104910c8eaebf04fbec3a5ac1dc0b2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &499179379
 GameObject:
   m_ObjectHideFlags: 0
@@ -1629,6 +1642,7 @@ GameObject:
   - component: {fileID: 2099280602}
   - component: {fileID: 2099280601}
   - component: {fileID: 2099280600}
+  - component: {fileID: 2099280604}
   m_Layer: 11
   m_Name: Killbox in case player inside
   m_TagString: Untagged
@@ -1739,6 +1753,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &2099280604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099280599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a104910c8eaebf04fbec3a5ac1dc0b2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2117784346
 PrefabInstance:
   m_ObjectHideFlags: 0
