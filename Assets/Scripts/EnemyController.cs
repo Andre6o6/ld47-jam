@@ -25,10 +25,14 @@ public class EnemyController : MonoBehaviour
     public bool canBeControlled = true;
     public bool lockedIntoMovement;
 
+    public Animator anim;
+
     private float height;
 
     private void Awake()
     {
+        anim = GetComponent<Animator>();
+
         rigid = GetComponent<Rigidbody2D>();
         gravity = Vector2.down * gravityForce;
         platformNormal = Vector2.up;
@@ -40,13 +44,13 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        if (target == null || !target.enabled)
+        if (target == null || !target.enabled || Cristal.cristalCount == 0)
         {
-            //animator
-            //Destroy(script)
+            anim?.SetTrigger("Die");
+            localVelocity = Vector2.zero;
             return;
         }
-
+        
         Vector2 origin = (Vector2)transform.position - platformNormal * height;
         Vector2 direction = (Vector2)target.transform.position - origin;
 
@@ -91,6 +95,11 @@ public class EnemyController : MonoBehaviour
 
             localVelocity.x = 0;
         }
+
+
+        anim.SetFloat("vX", Mathf.Abs(localVelocity.x));
+        anim.SetFloat("vY", localVelocity.y);
+        anim.SetBool("grounded", grounded);
     }
 
     private void FixedUpdate()
@@ -202,5 +211,11 @@ public class EnemyController : MonoBehaviour
             grounded = false;
             platform = null;
         }
+    }
+
+    public void SetGravity(Vector2 direction)
+    {
+        platformNormal = -direction.normalized;
+        gravity = direction.normalized * gravityForce;
     }
 }

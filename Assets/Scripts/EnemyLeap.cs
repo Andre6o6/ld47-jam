@@ -22,6 +22,7 @@ public class EnemyLeap : MonoBehaviour
     {
         enemy.canBeControlled = false;
         enemy.transform.Translate(enemy.platformNormal * 0.5f);
+        enemy.anim.SetBool("float", true);
         lastPlatform = enemy.platform;
 
         StartCoroutine(LeapAfterTime(target));
@@ -32,7 +33,8 @@ public class EnemyLeap : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         Vector2 direction = target.position - transform.position;
         rigid.velocity = direction.normalized * leapForce;
-        enemy.platformNormal = -direction.normalized ;
+        enemy.platformNormal = -direction.normalized;
+        enemy.anim.SetBool("float", false);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

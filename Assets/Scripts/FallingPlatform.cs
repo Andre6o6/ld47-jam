@@ -12,6 +12,9 @@ public class FallingPlatform : Platform
 
     private Rigidbody2D rigid;
 
+    public AudioSource audioFall;
+    public ParticleSystem particleFall;
+
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -34,9 +37,18 @@ public class FallingPlatform : Platform
         {
             if (!falling)
             {
-                collision.transform.SetParent(this.transform);
+                //collision.transform.SetParent(this.transform);
 
                 falling = true;
+
+                audioFall?.Play();
+                if (particleFall != null)
+                {
+                    var force = particleFall.forceOverLifetime;
+                    force.xMultiplier = Physics2D.gravity.x;
+                    force.yMultiplier = Physics2D.gravity.y;
+                    particleFall.Play();
+                }
 
                 //var player = collision.gameObject.GetComponent<PlayerMovement>();
                 //FIXME may collide on vierd angle and script order will break it

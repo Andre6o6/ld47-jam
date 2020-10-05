@@ -17,6 +17,8 @@ public class PlayerJump : MonoBehaviour
     private float normalProj;
     private float tangentProj;
 
+    public ParticleSystem jumpParticle;
+
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -30,6 +32,8 @@ public class PlayerJump : MonoBehaviour
             player.canBeControlled = false;
             rigid.velocity = player.platformNormal * maxJumpForce;
             lastPlatform = player.platform;
+
+            jumpParticle?.Play();
         }
 
         if (!player.canBeControlled)

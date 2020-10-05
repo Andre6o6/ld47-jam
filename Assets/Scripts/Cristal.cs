@@ -5,6 +5,8 @@ using UnityEngine;
 public class Cristal : MonoBehaviour
 {
     public static int cristalCount;
+    public ParticleSystem collectParticles;
+    public AudioSource audiosource;
 
     private void Start()
     {
@@ -16,8 +18,7 @@ public class Cristal : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            cristalCount -= 1;
-            Destroy(this.gameObject);
+            PopCristal();
 
             if (cristalCount == 0)
             {
@@ -25,5 +26,19 @@ public class Cristal : MonoBehaviour
                 nextLvl.LoadNextLvl();
             }
         }
+    }
+
+    public void PopCristal()
+    {
+        collectParticles.transform.SetParent(null);
+        collectParticles?.Play();
+        Destroy(collectParticles.gameObject, 0.5f);
+
+        audiosource.transform.SetParent(null);
+        audiosource.Play();
+        Destroy(audiosource.gameObject, audiosource.clip.length);
+
+        cristalCount -= 1;
+        Destroy(this.gameObject);
     }
 }
