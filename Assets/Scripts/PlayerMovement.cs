@@ -85,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
                 //TODO check grounded and stuff
                 if (!grounded || Vector2.Dot(platformNormal, newNormal) > 0.9f)  //FIXME how well normals align
                 {
-                    Debug.DrawRay(collision.GetContact(i).point, newNormal, Color.red);
+                    //Debug.DrawRay(collision.GetContact(i).point, newNormal, Color.red);
 
                     platform = collision.gameObject;
                     platformNormal = newNormal;

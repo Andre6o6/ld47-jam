@@ -27,13 +27,14 @@ public class PlayerJump : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && player.grounded)
+        if (Input.GetButtonDown("Jump") && player.grounded)
         {
             player.canBeControlled = false;
             rigid.velocity = player.platformNormal * maxJumpForce;
             lastPlatform = player.platform;
 
-            jumpParticle?.Play();
+            if (jumpParticle != null)
+                jumpParticle.Play();
         }
 
         if (!player.canBeControlled)
@@ -47,7 +48,7 @@ public class PlayerJump : MonoBehaviour
             var smoothTangentVelocity = Mathf.SmoothDamp(tangentProj, h * speedInAir, ref currentVelocityX, accelerationTime);
             rigid.velocity = normalProj * player.platformNormal + smoothTangentVelocity * tangent;
 
-            if (Input.GetKeyUp(KeyCode.Space) && normalProj > minJumpForce)
+            if (Input.GetButtonUp("Jump") && normalProj > minJumpForce)
             {
                 rigid.velocity = minJumpForce * player.platformNormal + smoothTangentVelocity * tangent;
             }

@@ -23,6 +23,9 @@ public class Quitting : MonoBehaviour
     {
         if (Application.platform == RuntimePlatform.WebGLPlayer)
         {
+            var player = FindObjectOfType<PlayerMovement>();
+            Destroy(player.gameObject);
+
             SceneManager.LoadScene("menu");
         }
         else
