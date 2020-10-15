@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CastleSpawn : MonoBehaviour
 {
@@ -8,7 +6,7 @@ public class CastleSpawn : MonoBehaviour
     public Collider2D col;
     public LayerMask playerMask;
 
-    private void Start()
+    private void OnEnable()
     {
         ContactFilter2D filter = new ContactFilter2D();
         filter.layerMask = playerMask;

@@ -1,18 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
     public Animator anim;
 
-    protected virtual void Start()
+    protected virtual void OnEnable()
     {
         anim = GetComponent<Animator>();
-
-        if (!NextLvlTransition.restarted)
-        {
-            anim.SetTrigger("Create");
-        }
+        anim.SetTrigger("Create");
     }
 }

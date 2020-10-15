@@ -21,8 +21,6 @@ public class Clouds : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        DontDestroyOnLoad(this);
-
         while (true)
         {
             yield return new WaitForSeconds(Random.Range(minTime, maxTime));

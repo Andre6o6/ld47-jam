@@ -42,12 +42,23 @@ public class EnemyController : MonoBehaviour
         height = GetComponent<Collider2D>().bounds.extents.y - 0.05f;
     }
 
+    private void OnEnable()
+    {
+        localVelocity = Vector2.zero;
+        canBeControlled = true;
+        rigid.simulated = true;
+        GetComponent<EnemyLeap>().enabled = true;
+    }
+
     private void Update()
     {
         if (target == null || !target.enabled || Cristal.cristalCount == 0)
         {
-            anim?.SetTrigger("Die");
+            anim?.SetBool("Die", true);
             localVelocity = Vector2.zero;
+            rigid.simulated = false;
+            canBeControlled = false;
+            GetComponent<EnemyLeap>().enabled = false;
             return;
         }
         
@@ -96,7 +107,6 @@ public class EnemyController : MonoBehaviour
             localVelocity.x = 0;
         }
 
-
         anim.SetFloat("vX", Mathf.Abs(localVelocity.x));
         anim.SetFloat("vY", localVelocity.y);
         anim.SetBool("grounded", grounded);
@@ -134,7 +144,6 @@ public class EnemyController : MonoBehaviour
     {
         int count = rigid.Cast(movement, raycastHits, movement.magnitude);
 
-        //rigid.MovePosition(rigid.position + movement);
         transform.Translate(movement);
 
         //Correct movement on the edges
@@ -217,5 +226,11 @@ public class EnemyController : MonoBehaviour
     {
         platformNormal = -direction.normalized;
         gravity = direction.normalized * gravityForce;
+    }
+
+    public void Hide()
+    {
+        anim?.SetBool("Die", false);
+        this.gameObject.SetActive(false);
     }
 }

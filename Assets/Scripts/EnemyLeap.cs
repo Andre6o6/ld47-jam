@@ -18,6 +18,11 @@ public class EnemyLeap : MonoBehaviour
         enemy = GetComponent<EnemyController>();
     }
 
+    private void OnEnable()
+    {
+        enemy.anim.SetBool("float", false);
+    }
+
     public void Leap(Transform target)
     {
         enemy.canBeControlled = false;
@@ -50,7 +55,6 @@ public class EnemyLeap : MonoBehaviour
         {
             if (collision.gameObject != lastPlatform)
             {
-
                 enemy.canBeControlled = true;
                 enemy.localVelocity = Vector2.zero;
                 rigid.velocity = Vector2.zero;

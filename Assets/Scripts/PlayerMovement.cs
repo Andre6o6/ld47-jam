@@ -110,4 +110,22 @@ public class PlayerMovement : MonoBehaviour
         platformNormal = -direction.normalized;
         Physics2D.gravity = direction.normalized * gravityForce;
     }
+
+    public void Despawn()
+    {
+        rigid.gravityScale = 0;
+        GetComponent<PlayerJump>().enabled = false;
+        this.enabled = false;
+    }
+
+    public void Respawn()
+    {
+        rigid.velocity = Vector2.zero;
+        rigid.gravityScale = 1;
+
+        GetComponent<PlayerJump>().enabled = true;
+        GetComponent<Animator>()?.SetBool("Die", false);
+
+        SetGravity(Vector2.down);
+    }
 }

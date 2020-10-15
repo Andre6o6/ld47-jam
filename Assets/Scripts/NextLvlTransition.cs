@@ -36,6 +36,13 @@ public class NextLvlTransition : MonoBehaviour
 
     public void Update()
     {
+        //
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            SceneManager.LoadScene(nextLvl);
+        }
+        //
+
         if (loading)
         {
             if (!player.canBeControlled)
@@ -54,7 +61,7 @@ public class NextLvlTransition : MonoBehaviour
     public void RestartLvl()
     {
         player = FindObjectOfType<PlayerMovement>();
-        player.enabled= false;
+        player.enabled = false;
         player.GetComponent<PlayerJump>().enabled = false;
         player.GetComponent<Rigidbody2D>().gravityScale = 0;
 

@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FallingPlatform : Platform
@@ -20,14 +19,9 @@ public class FallingPlatform : Platform
         rigid = GetComponent<Rigidbody2D>();
     }
 
-    protected override void Start()
+    protected override void OnEnable()
     {
-        base.Start();
-        if (NextLvlTransition.restarted)
-        {
-            anim.SetTrigger("Create");
-        }
-
+        base.OnEnable();
         originalPosition = transform.position;
     }
 
