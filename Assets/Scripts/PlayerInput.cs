@@ -14,4 +14,20 @@ public class PlayerInput : MonoBehaviour
             player.localVelocity.x = h * movementSpeed;
     }
 
+    public void Despawn()
+    {
+        player.gravityScale = 0;
+        GetComponent<PlayerJump>().enabled = false;
+        player.enabled = false;
+    }
+
+    public void Respawn()
+    {
+        player.enabled = true;
+        player.ResetCharacter();
+        player.gravityScale = 1;
+
+        GetComponent<PlayerJump>().enabled = true;
+        GetComponent<Animator>()?.SetBool("Die", false);
+    }
 }

@@ -9,15 +9,10 @@ public class FallingPlatform : Platform
     private Vector2 originalPosition;
     private bool falling;
 
-    private Rigidbody2D rigid;
+    private Vector2 velocity;
 
     public AudioSource audioFall;
     public ParticleSystem particleFall;
-
-    private void Awake()
-    {
-        rigid = GetComponent<Rigidbody2D>();
-    }
 
     protected override void OnEnable()
     {
@@ -25,15 +20,21 @@ public class FallingPlatform : Platform
         originalPosition = transform.position;
     }
 
+    private void FixedUpdate()
+    {
+        transform.Translate(velocity * Time.deltaTime);
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
+            collision.transform.SetParent(this.transform);
+
             if (!falling)
             {
-                //collision.transform.SetParent(this.transform);
-
                 falling = true;
+                velocity = speed * collision.GetContact(0).normal;
 
                 audioFall?.Play();
                 if (particleFall != null)
@@ -43,18 +44,15 @@ public class FallingPlatform : Platform
                     force.yMultiplier = Physics2D.gravity.y;
                     particleFall.Play();
                 }
-
-                //var player = collision.gameObject.GetComponent<PlayerMovement>();
-                //FIXME may collide on vierd angle and script order will break it
-                //So maybe check contact's normal
-
-                rigid.velocity = speed * collision.GetContact(0).normal;
             }
         }
         else if(collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
         {
             if (falling)
             {
+                //? mb it looks better without stopping 
+                velocity = Vector2.zero;
+
                 anim.SetTrigger("Destroy");
                 StartCoroutine(Recreate());
             }
@@ -81,7 +79,7 @@ public class FallingPlatform : Platform
     private IEnumerator Recreate()
     {
         yield return new WaitForSeconds(returnTime);
-        rigid.velocity = Vector2.zero;
+        velocity = Vector2.zero;
         transform.position = originalPosition;
         anim.SetTrigger("Create");
         falling = false;

@@ -19188,7 +19188,8 @@ GameObject:
   - component: {fileID: 9010945001847451664}
   - component: {fileID: 9010945001847451671}
   - component: {fileID: 9010945001847451665}
-  - component: {fileID: 9010945001847451667}
+  - component: {fileID: 9010945003063441550}
+  - component: {fileID: 9010945003063441551}
   - component: {fileID: 9010945001847451666}
   - component: {fileID: 1268746395}
   - component: {fileID: 1268746396}
@@ -19254,7 +19255,7 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &9010945001847451667
+--- !u!114 &9010945003063441550
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19263,14 +19264,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 9010945001847451670}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d29b31e052bd2b24ebe960df96959405, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c94842de3df0844e8509b34dfcfff5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gravityScale: 1
   gravityForce: 20
-  movementSpeed: 4
+  localVelocity: {x: 0, y: 0}
+  platformMask:
+    serializedVersion: 2
+    m_Bits: 512
   platform: {fileID: 0}
+  platformNormal: {x: 0, y: 0}
   grounded: 0
-  canBeControlled: 0
+  canBeControlled: 1
+--- !u!114 &9010945003063441551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9010945001847451670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b36c88810c2882d4294346e53c769695, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 9010945003063441550}
+  movementSpeed: 4
 --- !u!114 &9010945001847451666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19453,5 +19473,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93da2ac100d9cfc479e9b3c3ca58a155, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 9010945001847451667}
+  character: {fileID: 9010945003063441550}
   enemy: {fileID: 0}

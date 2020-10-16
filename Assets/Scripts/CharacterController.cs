@@ -5,8 +5,8 @@ using UnityEngine;
 public class CharacterController : MonoBehaviour
 {
     //Gravity
-    public float gravityMultiplier = 1;
-    private Vector2 gravity;
+    public float gravityScale = 1;
+    public Vector2 gravity { get; private set; }
     public float gravityForce = 20;
 
     //Movement velocity
@@ -65,7 +65,7 @@ public class CharacterController : MonoBehaviour
     private void FixedUpdate()
     {
         //Add gravity
-        localVelocity.y -= gravityMultiplier * gravityForce * Time.deltaTime;
+        localVelocity.y -= gravityScale * gravityForce * Time.deltaTime;
 
         if (canBeControlled)
         {
@@ -143,5 +143,14 @@ public class CharacterController : MonoBehaviour
     public void SetVelocity(Vector2 velocity)
     {
         this.velocity = velocity;
+    }
+
+    public void ResetCharacter()
+    {
+        velocity = Vector2.zero;
+        localVelocity = Vector2.zero;
+
+        gravity = Vector2.down * gravityForce;
+        platformNormal = Vector2.up;
     }
 }

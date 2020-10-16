@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    private PlayerMovement target;
+    private PlayerInput target;
     public LayerMask obstacleMask;
 
     public Vector2 gravity;
@@ -37,7 +37,7 @@ public class EnemyController : MonoBehaviour
         gravity = Vector2.down * gravityForce;
         platformNormal = Vector2.up;
 
-        target = FindObjectOfType<PlayerMovement>();
+        target = FindObjectOfType<PlayerInput>();
 
         height = GetComponent<Collider2D>().bounds.extents.y - 0.05f;
     }

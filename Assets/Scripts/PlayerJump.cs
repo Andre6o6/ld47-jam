@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerJump : MonoBehaviour
 {
@@ -10,19 +8,15 @@ public class PlayerJump : MonoBehaviour
     public float accelerationTime;
 
     private float currentVelocityX;
-    private PlayerMovement player;
-    private Rigidbody2D rigid;
+    private CharacterController player;
 
     private GameObject lastPlatform;
-    private float normalProj;
-    private float tangentProj;
 
     public ParticleSystem jumpParticle;
 
     private void Awake()
     {
-        rigid = GetComponent<Rigidbody2D>();
-        player = GetComponent<PlayerMovement>();
+        player = GetComponent<CharacterController>();
     }
 
     private void Update()
@@ -30,7 +24,7 @@ public class PlayerJump : MonoBehaviour
         if (Input.GetButtonDown("Jump") && player.grounded)
         {
             player.canBeControlled = false;
-            rigid.velocity = player.platformNormal * maxJumpForce;
+            player.localVelocity.y = maxJumpForce;
             lastPlatform = player.platform;
 
             if (jumpParticle != null)
@@ -40,40 +34,42 @@ public class PlayerJump : MonoBehaviour
         if (!player.canBeControlled)
         {
             var h = Input.GetAxis("Horizontal");
-            var tangent = new Vector2(player.platformNormal.y, -player.platformNormal.x);
 
-            normalProj = Vector2.Dot(rigid.velocity, player.platformNormal);
-            tangentProj = Vector2.Dot(rigid.velocity, tangent);
+            var smoothTangentVelocity = Mathf.SmoothDamp(player.localVelocity.x, h * speedInAir, ref currentVelocityX, accelerationTime);
+            player.localVelocity.x = smoothTangentVelocity;
 
-            var smoothTangentVelocity = Mathf.SmoothDamp(tangentProj, h * speedInAir, ref currentVelocityX, accelerationTime);
-            rigid.velocity = normalProj * player.platformNormal + smoothTangentVelocity * tangent;
-
-            if (Input.GetButtonUp("Jump") && normalProj > minJumpForce)
+            if (Input.GetButtonUp("Jump") && player.localVelocity.y > minJumpForce)
             {
-                rigid.velocity = minJumpForce * player.platformNormal + smoothTangentVelocity * tangent;
+                player.localVelocity.y = minJumpForce;
             }
         }
+    }
+
+    private void ResetJump(Collision2D collision)
+    {
+        player.SetVelocity(Vector2.zero);
+        player.localVelocity = Vector2.zero;
+        player.SetGravity(-collision.GetContact(0).normal);
+
+        player.canBeControlled = true;
+        lastPlatform = null;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!player.canBeControlled)
         {
-            rigid.velocity = Vector2.zero;
-            player.canBeControlled = true;
-            lastPlatform = null;
+            ResetJump(collision);
         }
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (!player.canBeControlled && 
-            ((collision.gameObject != lastPlatform && Cristal.cristalCount > 0) || 
+        if (!player.canBeControlled &&
+            ((collision.gameObject != lastPlatform && Cristal.cristalCount > 0) ||  //HACK for jumping by the wall
             (collision.gameObject.tag == "Base" && Cristal.cristalCount == 0)))     //HACK for next lvl transition 
         {
-            rigid.velocity = Vector2.zero;
-            player.canBeControlled = true;
-            lastPlatform = null;
+            ResetJump(collision);
         }
     }
 }

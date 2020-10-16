@@ -22,7 +22,7 @@ public class FrameManager : MonoBehaviour
         }
     }
 
-    private PlayerMovement player;
+    private CharacterController player;
 
     public Frame[] frames;
     private int frameIndex;
@@ -42,7 +42,7 @@ public class FrameManager : MonoBehaviour
     {
         _instance = this;
 
-        player = FindObjectOfType<PlayerMovement>();
+        player = FindObjectOfType<CharacterController>();
         frameCamera = GetComponent<FrameCamera>();
 
         currentFrame = frames[frameIndex];
@@ -102,14 +102,13 @@ public class FrameManager : MonoBehaviour
     private IEnumerator RestartAfterTime()
     {
         //Disable player
-        player = FindObjectOfType<PlayerMovement>();
-        player.Despawn();
+        var playerInput = player.GetComponent<PlayerInput>();
+        playerInput.Despawn();
         
         yield return new WaitForSeconds(restartTime);
 
         //Enable player back
-        player.enabled = true;
-        player.Respawn();
+        playerInput.Respawn();
         player.transform.position = spawnPosition;
 
         //TODO enable cristals back on

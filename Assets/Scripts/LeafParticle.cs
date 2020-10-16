@@ -5,10 +5,12 @@ using UnityEngine;
 public class LeafParticle : MonoBehaviour
 {
     private ParticleSystem particles;
+    private CharacterController player;
 
     private void Awake()
     {
         particles = GetComponent<ParticleSystem>();
+        player = FindObjectOfType<PlayerInput>().GetComponent<CharacterController>();
 
         DontDestroyOnLoad(this);
     }
@@ -17,7 +19,7 @@ public class LeafParticle : MonoBehaviour
     void Update()
     {
         var force = particles.forceOverLifetime;
-        force.xMultiplier = Physics2D.gravity.normalized.x;
-        force.yMultiplier = Physics2D.gravity.normalized.y;
+        force.xMultiplier = player.gravity.normalized.x;
+        force.yMultiplier = player.gravity.normalized.y;
     }
 }
