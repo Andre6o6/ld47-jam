@@ -9,6 +9,9 @@ public class Frame : MonoBehaviour
 
     private void OnEnable()
     {
-        FrameManager.instance.frameCamera.SetSize(cameraSize);
+        FrameManager.instance.currentFrame = this;
+
+        if (FrameManager.instance.frameCamera != null)
+            FrameManager.instance.frameCamera.SetSize(cameraSize);
     }
 }

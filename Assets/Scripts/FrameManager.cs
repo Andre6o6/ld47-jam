@@ -25,7 +25,8 @@ public class FrameManager : MonoBehaviour
     private PlayerMovement player;
 
     public Frame[] frames;
-    public int frameIndex;
+    private int frameIndex;
+    public Frame currentFrame;
     private bool loading;
 
     public float restartTime = 1;
@@ -39,12 +40,17 @@ public class FrameManager : MonoBehaviour
 
     public void Awake()
     {
-        if (_instance == null)
-        {
-            _instance = this;
-        }
+        _instance = this;
 
         player = FindObjectOfType<PlayerMovement>();
+        frameCamera = GetComponent<FrameCamera>();
+
+        currentFrame = frames[frameIndex];
+    }
+
+    private void OnDisable()
+    {
+        _instance = null;
     }
 
     public void NextFrame()
@@ -80,9 +86,10 @@ public class FrameManager : MonoBehaviour
 
                 //Switch frames
                 //TODO if no more frames - next lvl
-                frames[frameIndex].gameObject.SetActive(false);
+                currentFrame.gameObject.SetActive(false);
                 frameIndex += 1;
-                frames[frameIndex].gameObject.SetActive(true);                
+                currentFrame = frames[frameIndex];
+                currentFrame.gameObject.SetActive(true);
             }
         }
     }
@@ -112,6 +119,6 @@ public class FrameManager : MonoBehaviour
         }
 
         //Do some stuff specific to frame
-        frames[frameIndex].onRestart?.Invoke();
+        currentFrame.onRestart?.Invoke();
     }
 }

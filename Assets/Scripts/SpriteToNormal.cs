@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class SpriteToNormal : MonoBehaviour
 {
-    public PlayerMovement player;
+    public CharacterController character;
     public EnemyController enemy;
 
     private void Update()
     {
         float angle = 0;
-        if (player != null)
+        if (character != null)
         {
-            angle = Vector2.SignedAngle(Vector2.up, player.platformNormal);
+            angle = Vector2.SignedAngle(Vector2.up, character.platformNormal);
         }
         else if (enemy != null)
         {

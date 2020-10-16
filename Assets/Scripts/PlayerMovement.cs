@@ -18,11 +18,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        var playerObjs = FindObjectsOfType<PlayerMovement>();
+        /*var playerObjs = FindObjectsOfType<PlayerMovement>();
         if (playerObjs.Length > 1)
         {
             Destroy(this.gameObject);
-        }
+        }*/
 
         //Instead of destroying, warp to a start position
         //or throw there with gravity 

@@ -9,47 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/menu.unity
     guid: 3f9c593ddc351514cb461e271c504af3
   - enabled: 1
-    path: Assets/Scenes/old/1.unity
-    guid: 1109487d27bcd1d4bae1fdc4dfd2ce3d
-  - enabled: 1
-    path: Assets/Scenes/old/2.unity
-    guid: dc514fab9edd93044aa065d64c6a2ed8
-  - enabled: 1
-    path: Assets/Scenes/old/3.unity
-    guid: eef751e662060dc4c87784a9582b86cb
-  - enabled: 1
-    path: Assets/Scenes/old/4.unity
-    guid: f339223526cade242b5c0934903897a4
-  - enabled: 1
-    path: Assets/Scenes/old/5.unity
-    guid: 7004e34b8f8f0a946a8e8348459f868b
-  - enabled: 1
-    path: Assets/Scenes/old/6.unity
-    guid: 752c58a10c504194aa34d53b87c790f7
-  - enabled: 1
-    path: Assets/Scenes/old/7.unity
-    guid: b1639b82d1fd2d046817d84fd8b6365f
-  - enabled: 1
-    path: Assets/Scenes/old/8.unity
-    guid: 221f5538c4183604da0e2991ad790a40
-  - enabled: 1
-    path: Assets/Scenes/old/9.unity
-    guid: fb398350f35a8224bb99056a3c18edcd
-  - enabled: 1
-    path: Assets/Scenes/old/10.unity
-    guid: 3893fb168ebf45448acbab96129df00e
-  - enabled: 1
-    path: Assets/Scenes/old/10-1.unity
-    guid: 3e67af65cc273764288f2e694bbd0508
-  - enabled: 1
-    path: Assets/Scenes/old/11.unity
-    guid: 51816740005afba43a73883cd2ed54dc
-  - enabled: 1
-    path: Assets/Scenes/old/12.unity
-    guid: dd4aedfcd75e95d4187fb5cc9bdee2ae
-  - enabled: 1
-    path: Assets/Scenes/old/castle.unity
-    guid: 6874ea5a091516d4890b216f860d3d58
+    path: Assets/Scenes/World1.unity
+    guid: 9ed64a4e5e88f9047b6a4b3445cd43a4
   - enabled: 1
     path: Assets/Scenes/credits.unity
     guid: cff69b26ab3afbd4984b6a7c45b33a66

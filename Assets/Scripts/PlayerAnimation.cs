@@ -1,29 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-    private PlayerMovement player;
+    private CharacterController player;
     private Animator anim;
-    private Rigidbody2D rigid;
     private SpriteRenderer sprite;
 
     private void Awake()
     {
-        player = GetComponent<PlayerMovement>();
+        player = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
-        rigid = GetComponent<Rigidbody2D>();
         sprite = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void Update()
     {
-        var velocity = rigid.velocity;
-
-        //var tangent = new Vector2(player.platformNormal.y, -player.platformNormal.x);
-        float vX = Input.GetAxis("Horizontal");
-        float vY = Vector2.Dot(velocity, player.platformNormal);
+        float vX = player.localVelocity.x;
+        float vY = player.localVelocity.y;
 
         if (vX > 0)
         {
