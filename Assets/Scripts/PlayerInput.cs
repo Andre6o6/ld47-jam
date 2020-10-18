@@ -25,7 +25,6 @@ public class PlayerInput : MonoBehaviour
     {
         player.enabled = true;
         player.ResetCharacter();
-        player.gravityScale = 1;
 
         GetComponent<PlayerJump>().enabled = true;
         GetComponent<Animator>()?.SetBool("Die", false);

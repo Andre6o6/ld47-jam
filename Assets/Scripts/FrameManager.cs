@@ -38,6 +38,8 @@ public class FrameManager : MonoBehaviour
 
     public FrameCamera frameCamera;
 
+    private bool restarting;
+
     public void Awake()
     {
         _instance = this;
@@ -96,16 +98,22 @@ public class FrameManager : MonoBehaviour
 
     public void RestartFrame()
     {
-        StartCoroutine(RestartAfterTime());
+        if (!restarting)    //cuz fires multipe times
+        {
+            StartCoroutine(RestartAfterTime());
+        }
     }
 
     private IEnumerator RestartAfterTime()
     {
+        restarting = true;
+
         //Disable player
         var playerInput = player.GetComponent<PlayerInput>();
         playerInput.Despawn();
         
         yield return new WaitForSeconds(restartTime);
+        restarting = false;
 
         //Enable player back
         playerInput.Respawn();

@@ -104,9 +104,6 @@ public class CharacterController : MonoBehaviour
 
                     platformNormal = newNormal;
                     platform = collision.gameObject;
-
-                    //velocity = Vector2.zero;
-                    //gravity = -platformNormal * gravityForce;
                     break;
                 }
 
@@ -147,6 +144,9 @@ public class CharacterController : MonoBehaviour
 
     public void ResetCharacter()
     {
+        canBeControlled = true;
+        gravityScale = 1;
+
         velocity = Vector2.zero;
         localVelocity = Vector2.zero;
 

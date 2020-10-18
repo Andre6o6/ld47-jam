@@ -7,27 +7,31 @@ public class EnemyLeap : MonoBehaviour
     public float leapForce;
     public float waitTime;
 
-    private EnemyController enemy;
-    private Rigidbody2D rigid;
+    private CharacterController enemy;
 
     private GameObject lastPlatform;
+    private Animator anim;
 
     private void Awake()
     {
-        rigid = GetComponent<Rigidbody2D>();
-        enemy = GetComponent<EnemyController>();
+        enemy = GetComponent<CharacterController>();
+        anim = GetComponent<Animator>();
     }
 
     private void OnEnable()
     {
-        enemy.anim.SetBool("float", false);
+        anim.SetBool("float", false);
     }
 
     public void Leap(Transform target)
     {
         enemy.canBeControlled = false;
+        enemy.grounded = false;
+        enemy.gravityScale = 0;
+        //enemy.GetComponent<EnemyController>().enabled = false;
+
         enemy.transform.Translate(enemy.platformNormal * 0.5f);
-        enemy.anim.SetBool("float", true);
+        anim.SetBool("float", true);
         lastPlatform = enemy.platform;
 
         StartCoroutine(LeapAfterTime(target));
@@ -37,16 +41,18 @@ public class EnemyLeap : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         Vector2 direction = target.position - transform.position;
-        rigid.velocity = direction.normalized * leapForce;
+
         enemy.platformNormal = -direction.normalized;
-        enemy.anim.SetBool("float", false);
+        enemy.localVelocity = Vector2.down * leapForce;
+        anim.SetBool("float", false);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         enemy.canBeControlled = true;
-        enemy.localVelocity = Vector2.zero;
-        rigid.velocity = Vector2.zero;
+        enemy.ResetCharacter();
+
+        //enemy.GetComponent<EnemyController>().enabled = true;
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -56,12 +62,10 @@ public class EnemyLeap : MonoBehaviour
             if (collision.gameObject != lastPlatform)
             {
                 enemy.canBeControlled = true;
-                enemy.localVelocity = Vector2.zero;
-                rigid.velocity = Vector2.zero;
+                enemy.ResetCharacter();
             }
         }
     }
 
     //OnTriggerEnter in killbox? Destroy? respawn after time?
-
 }
