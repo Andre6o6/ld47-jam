@@ -51,7 +51,8 @@ public class FallingPlatform : Platform
             if (falling)
             {
                 //? mb it looks better without stopping 
-                velocity = Vector2.zero;
+                //velocity = Vector2.zero;
+                velocity *= 0.5f;
 
                 anim.SetTrigger("Destroy");
                 StartCoroutine(Recreate());

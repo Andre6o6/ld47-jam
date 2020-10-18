@@ -37,9 +37,9 @@ public class CharacterController : MonoBehaviour
         float distance = movement.magnitude;
 
         int count = rigid.Cast(movement, raycastHits, movement.magnitude);
-        /*if (count > 0)
+        /*if (!snapped && count > 0)
         {
-            distance = raycastHits[0].distance;
+            distance = raycastHits[0].distance + 0.01f; //to fire collision
         }*/
         transform.Translate(movement.normalized * distance);
 
@@ -133,6 +133,8 @@ public class CharacterController : MonoBehaviour
 
     public void SetGravity(Vector2 direction)
     {
+        //FIXME mb reset velocity
+
         platformNormal = -direction.normalized;
         gravity = direction.normalized * gravityForce;
     }

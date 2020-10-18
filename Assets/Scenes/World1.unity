@@ -20243,6 +20243,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FallingPlatform (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1968902570617290029, guid: 4793aa6df7b68944780203cef4bfa6e1,
+        type: 3}
+      propertyPath: m_SleepingMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1968902570617290030, guid: 4793aa6df7b68944780203cef4bfa6e1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -28966,6 +28971,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FallingPlatform
       objectReference: {fileID: 0}
+    - target: {fileID: 1968902570617290029, guid: 4793aa6df7b68944780203cef4bfa6e1,
+        type: 3}
+      propertyPath: m_SleepingMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1968902570617290030, guid: 4793aa6df7b68944780203cef4bfa6e1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -33920,6 +33930,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9010945001847451665, guid: 06908c2a4fae72a4381b391ab1a73ac1,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9010945001847451670, guid: 06908c2a4fae72a4381b391ab1a73ac1,
         type: 3}

@@ -69,7 +69,7 @@ public class SpiderAI : MonoBehaviour
                     StartCoroutine(UnlockMovement());
                 }
             }
-            else    //!hit
+            else    //!hit  FIXME this fires even when plaform is the same
             {
                 if (canLeap)
                 {

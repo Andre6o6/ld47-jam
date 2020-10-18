@@ -58,6 +58,7 @@ public class FrameManager : MonoBehaviour
     public void NextFrame()
     {
         //Throw player with gravity
+        player.localVelocity = Vector2.zero;
         player.SetGravity(gravityPosition - (Vector2)player.transform.position);
         player.canBeControlled = false;
 
