@@ -22,7 +22,7 @@ public class FallingPlatform : Platform
 
     private void FixedUpdate()
     {
-        transform.Translate(velocity * Time.deltaTime);
+        transform.Translate(velocity * Time.deltaTime, Space.World);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
