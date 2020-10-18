@@ -65,19 +65,12 @@ public class CharacterController : MonoBehaviour
     private void FixedUpdate()
     {
         //Add gravity
-        //FIXME somehow do gravity in global space, so that I can slinp myself after getting last cristal
         localVelocity.y -= gravityScale * gravityForce * Time.deltaTime;
-
-        if (canBeControlled)
-        {
-            //Calc. velocity from local velocity
-            //tangent = new Vector2(platformNormal.y, -platformNormal.x);
-            //velocity = localVelocity.x * tangent + localVelocity.y * platformNormal;
-        }
 
         //Calc. velocity from local velocity
         tangent = new Vector2(platformNormal.y, -platformNormal.x);
         velocity = localVelocity.x * tangent + localVelocity.y * platformNormal;
+
         Move(velocity * Time.deltaTime, grounded);
 
         if (grounded && canBeControlled)
@@ -132,12 +125,18 @@ public class CharacterController : MonoBehaviour
         }
     }
 
-    public void SetGravity(Vector2 direction)
+    public void SetGravity(Vector2 direction, bool recalculateLocal = false)
     {
-        //FIXME mb reset velocity
-
         platformNormal = -direction.normalized;
         gravity = direction.normalized * gravityForce;
+
+        if (recalculateLocal)
+        {
+            //Recalculate local velocity to keep the momentum
+            tangent = new Vector2(platformNormal.y, -platformNormal.x);
+            localVelocity.x = Vector2.Dot(velocity, tangent);
+            localVelocity.y = Vector2.Dot(velocity, platformNormal);
+        }
     }
 
     public void SetVelocity(Vector2 velocity)

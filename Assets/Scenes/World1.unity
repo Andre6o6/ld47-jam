@@ -28138,6 +28138,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cristal
       objectReference: {fileID: 0}
+    - target: {fileID: 4589681589851401512, guid: 80835f334e52da74ab8605462a944e63,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4589681589851401514, guid: 80835f334e52da74ab8605462a944e63,
         type: 3}
       propertyPath: m_LocalPosition.x
