@@ -119,7 +119,6 @@ public class SpiderAI : MonoBehaviour
             controller.canBeControlled = true;
             controller.gravityScale = 1;
             controller.localVelocity = Vector2.zero;
-            //controller.SetVelocity(Vector2.zero);
 
             StartCoroutine(gameObject.DoAfterTime(0.5f, () => { canLeap = true; }));
         }
@@ -141,6 +140,12 @@ public class SpiderAI : MonoBehaviour
                 controller.SetGravity(direction);
             }
         }
+    }
+
+    public void Hide()
+    {
+        anim?.SetBool("Die", false);
+        this.gameObject.SetActive(false);
     }
 
     //FIXME hz why I added that

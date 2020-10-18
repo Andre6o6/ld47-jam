@@ -127,8 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93da2ac100d9cfc479e9b3c3ca58a155, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  enemy: {fileID: 8377441943501540408}
+  character: {fileID: 5016965856397148540}
 --- !u!1 &8377441942441670743
 GameObject:
   m_ObjectHideFlags: 0
@@ -5091,8 +5090,8 @@ GameObject:
   - component: {fileID: 8377441943501540413}
   - component: {fileID: 8377441943501540410}
   - component: {fileID: 8377441943501540411}
-  - component: {fileID: 8377441943501540408}
-  - component: {fileID: 8377441943501540409}
+  - component: {fileID: 5016965856397148540}
+  - component: {fileID: 2735911914567525801}
   - component: {fileID: 8377441943501540415}
   - component: {fileID: 8377441943501540412}
   - component: {fileID: 8377441943501540414}
@@ -5157,7 +5156,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &8377441943501540408
+--- !u!114 &5016965856397148540
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5166,23 +5165,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 8377441943501540422}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc90de72ad378954ba150d9ef31df01d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c94842de3df0844e8509b34dfcfff5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacleMask:
+  gravityScale: 1
+  gravityForce: 20
+  localVelocity: {x: 0, y: 0}
+  platformMask:
     serializedVersion: 2
     m_Bits: 512
-  gravity: {x: 0, y: 0}
-  gravityForce: 20
-  movementSpeed: 3
-  localVelocity: {x: 0, y: 0}
   platform: {fileID: 0}
   platformNormal: {x: 0, y: 0}
   grounded: 0
   canBeControlled: 1
-  lockedIntoMovement: 0
-  anim: {fileID: 0}
---- !u!114 &8377441943501540409
+--- !u!114 &2735911914567525801
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5191,9 +5187,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8377441943501540422}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce4284f3d774ee24cb2c52d1bb37ceb4, type: 3}
+  m_Script: {fileID: 11500000, guid: a0c385abe3c680742b9f2164d80ba7a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementSpeed: 3
+  movementLockTime: 4
   leapForce: 5
   waitTime: 2
 --- !u!95 &8377441943501540415
