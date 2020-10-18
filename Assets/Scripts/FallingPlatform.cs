@@ -66,6 +66,11 @@ public class FallingPlatform : Platform
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             collision.transform.SetParent(null);
+            //HACK because reparenting breaks DDOL
+            if (collision.gameObject.GetComponent<DontDestroyOnLoad>() != null)
+            {
+                DontDestroyOnLoad(collision.gameObject);
+            }
         }
     }
 
