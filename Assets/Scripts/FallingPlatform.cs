@@ -62,6 +62,7 @@ public class FallingPlatform : Platform
 
     private void OnCollisionExit2D(Collision2D collision)
     {
+        //FIXME make sure this fires on platform resetting and on switching to next frame
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             collision.transform.SetParent(null);

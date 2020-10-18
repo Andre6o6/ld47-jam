@@ -65,6 +65,7 @@ public class CharacterController : MonoBehaviour
     private void FixedUpdate()
     {
         //Add gravity
+        //FIXME somehow do gravity in global space, so that I can slinp myself after getting last cristal
         localVelocity.y -= gravityScale * gravityForce * Time.deltaTime;
 
         if (canBeControlled)
@@ -146,7 +147,7 @@ public class CharacterController : MonoBehaviour
 
     public void ResetCharacter()
     {
-        canBeControlled = true;
+        //canBeControlled = true;
         gravityScale = 1;
 
         velocity = Vector2.zero;

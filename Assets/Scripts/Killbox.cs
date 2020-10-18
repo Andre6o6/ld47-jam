@@ -6,6 +6,10 @@ public class Killbox : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //FIXME Hack. Mb I need to set up an Event on frame end or have killbox in every platform
+        if (Cristal.cristalCount == 0)
+            return;
+
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             collision.GetComponent<Animator>()?.SetBool("Die", true);

@@ -66,8 +66,8 @@ public class PlayerJump : MonoBehaviour
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (!player.canBeControlled &&
-            ((collision.gameObject != lastPlatform && Cristal.cristalCount > 0) ||  //HACK for jumping by the wall
-            (collision.gameObject.tag == "Base" && Cristal.cristalCount == 0)))     //HACK for next lvl transition 
+            //((collision.gameObject != lastPlatform && Cristal.cristalCount > 0) ||  //HACK for jumping by the wall
+            (collision.gameObject.tag == "Base" && Cristal.cristalCount == 0))//)     //HACK for next lvl transition 
         {
             ResetJump(collision);
         }

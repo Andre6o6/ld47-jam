@@ -753,7 +753,6 @@ GameObject:
   - component: {fileID: 114942892}
   - component: {fileID: 114942891}
   - component: {fileID: 114942890}
-  - component: {fileID: 114942889}
   m_Layer: 11
   m_Name: Killbox in case player inside
   m_TagString: Untagged
@@ -775,18 +774,6 @@ Transform:
   m_Father: {fileID: 325269080}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!114 &114942889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 114942887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a104910c8eaebf04fbec3a5ac1dc0b2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114942890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3654,7 +3641,6 @@ GameObject:
   - component: {fileID: 547271736}
   - component: {fileID: 547271735}
   - component: {fileID: 547271734}
-  - component: {fileID: 547271733}
   m_Layer: 11
   m_Name: Killbox in case player inside
   m_TagString: Untagged
@@ -3676,18 +3662,6 @@ Transform:
   m_Father: {fileID: 472100516}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 46.142002}
---- !u!114 &547271733
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 547271731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a104910c8eaebf04fbec3a5ac1dc0b2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &547271734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4337,7 +4311,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -10
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -9104,7 +9078,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -10
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -15523,7 +15497,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -10
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -22957,7 +22931,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -10
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -29906,7 +29880,6 @@ GameObject:
   - component: {fileID: 1750266171}
   - component: {fileID: 1750266170}
   - component: {fileID: 1750266169}
-  - component: {fileID: 1750266168}
   m_Layer: 11
   m_Name: Killbox in case player inside (1)
   m_TagString: Untagged
@@ -29928,18 +29901,6 @@ Transform:
   m_Father: {fileID: 325269080}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!114 &1750266168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1750266166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a104910c8eaebf04fbec3a5ac1dc0b2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1750266169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33931,20 +33892,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9010945001847451665, guid: 06908c2a4fae72a4381b391ab1a73ac1,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9010945001847451670, guid: 06908c2a4fae72a4381b391ab1a73ac1,
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 9010945001847451670, guid: 06908c2a4fae72a4381b391ab1a73ac1,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06908c2a4fae72a4381b391ab1a73ac1, type: 3}

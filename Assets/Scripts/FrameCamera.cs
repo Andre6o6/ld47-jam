@@ -5,12 +5,17 @@ public class FrameCamera : MonoBehaviour
 {
     public float resizeTime;
     private float t;
-    private float currentSize = 5;
+    private float currentSize;
 
     [System.Serializable]
     public struct GameobjectsOnEdges
     {
         public GameObject up, down, left, right;
+
+        public bool NotNull()
+        {
+            return up != null && down != null && left != null && right != null;
+        }
     }
     public GameobjectsOnEdges keptOnEdges;
     public float addOffset = 1;
@@ -22,6 +27,11 @@ public class FrameCamera : MonoBehaviour
 
     public void SetSize(float size)
     {
+        if (currentSize == 0)
+        {
+            currentSize = Camera.main.orthographicSize;
+        }
+
         if (currentSize == size)
             return;
 
@@ -47,9 +57,12 @@ public class FrameCamera : MonoBehaviour
         float yOffset = 0.5f * size + addOffset;
         float xOffset = 0.5f * size * Camera.main.aspect + addOffset;
 
-        keptOnEdges.up.transform.position = Vector3.up * yOffset;
-        keptOnEdges.down.transform.position = Vector3.down * yOffset;
-        keptOnEdges.left.transform.position = Vector3.left * xOffset;
-        keptOnEdges.right.transform.position = Vector3.right * xOffset;
+        if (keptOnEdges.NotNull())  //FIXME
+        {
+            keptOnEdges.up.transform.position = Vector3.up * yOffset;
+            keptOnEdges.down.transform.position = Vector3.down * yOffset;
+            keptOnEdges.left.transform.position = Vector3.left * xOffset;
+            keptOnEdges.right.transform.position = Vector3.right * xOffset;
+        }
     }
 }
