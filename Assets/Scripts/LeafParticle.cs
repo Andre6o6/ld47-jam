@@ -7,6 +7,8 @@ public class LeafParticle : MonoBehaviour
     private ParticleSystem particles;
     private CharacterController player;
 
+    public float gravityScale = 1;
+
     private void Awake()
     {
         particles = GetComponent<ParticleSystem>();
@@ -19,7 +21,7 @@ public class LeafParticle : MonoBehaviour
     void Update()
     {
         var force = particles.forceOverLifetime;
-        force.xMultiplier = player.gravity.normalized.x;
-        force.yMultiplier = player.gravity.normalized.y;
+        force.xMultiplier = gravityScale * player.gravity.normalized.x;
+        force.yMultiplier = gravityScale * player.gravity.normalized.y;
     }
 }

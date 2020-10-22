@@ -41,7 +41,7 @@ public class CharacterController : MonoBehaviour
         {
             distance = raycastHits[0].distance + 0.01f; //to fire collision
         }*/
-        transform.Translate(movement.normalized * distance);
+        transform.Translate(movement.normalized * distance, Space.World);
 
         //Additional movement to correct on edges
         if (snapped)
@@ -56,7 +56,7 @@ public class CharacterController : MonoBehaviour
                         return;
 
                     var newMovement = raycastHits[0].distance * Physics2D.gravity.normalized;
-                    transform.Translate(newMovement);
+                    transform.Translate(newMovement, Space.World);
                 }
             }
         }
