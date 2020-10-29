@@ -57,6 +57,13 @@ public class FrameManager : MonoBehaviour
 
     public void NextFrame()
     {
+        //Check is base position changed
+        if (frames[frameIndex + 1].updateBasePosition)
+        {
+            spawnPosition = frames[frameIndex + 1].spawnPosition;
+            gravityPosition = frames[frameIndex + 1].gravityPosition;
+        }
+
         //Throw player with gravity
         //player.localVelocity = Vector2.zero;
         player.SetGravity((gravityPosition - (Vector2)player.transform.position).normalized, true);
@@ -66,17 +73,26 @@ public class FrameManager : MonoBehaviour
         var platforms = FindObjectsOfType<Platform>();
         foreach (var p in platforms)
         {
-            p.anim.SetTrigger("Destroy");
+            p.Disappear();
         }
 
         //New list for cristals 
         cristals = new List<Cristal>();
 
         loading = true;
+        currentFrame.onNextFrame?.Invoke();
     }
 
     public void Update()
     {
+        //
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            NextFrame();
+            player.canBeControlled = true;
+        }
+        //
+
         if (loading)
         {
             if (!player.canBeControlled)
@@ -119,6 +135,7 @@ public class FrameManager : MonoBehaviour
         //Enable player back
         playerInput.Respawn();
         player.transform.position = spawnPosition;
+        player.SetGravity(currentFrame.GetSpawnGravity());
 
         //TODO enable cristals back on
         foreach (var c in cristals)

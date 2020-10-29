@@ -7,6 +7,8 @@ public class MimicCristal : MonoBehaviour
     public CharacterController enemy;
     public int cristalTresh;
 
+    public bool useThisCristal;
+
     private void Update()
     {
         //TODO get cristal event
@@ -14,7 +16,16 @@ public class MimicCristal : MonoBehaviour
             Cristal.cristalCount > 0 && 
             Cristal.cristalCount <= cristalTresh)
         {
-            SpawnEnemy();
+            if (!useThisCristal)
+            {
+                SpawnEnemy();
+            }
+            else
+            {
+                enemy.transform.position = this.transform.position;
+                enemy.gameObject.SetActive(true);
+            }
+
             this.gameObject.SetActive(false);
         }
     }

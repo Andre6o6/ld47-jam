@@ -282,7 +282,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraSize: 9
+  cameraPosition: {x: 0, y: 0}
+  updateBasePosition: 0
+  spawnPosition: {x: 0, y: 0}
+  gravityPosition: {x: 0, y: 0}
   onRestart:
+    m_PersistentCalls:
+      m_Calls: []
+  onNextFrame:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1001 &20803721
@@ -514,7 +521,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraSize: 9
+  cameraPosition: {x: 0, y: 0}
+  updateBasePosition: 0
+  spawnPosition: {x: 0, y: 0}
+  gravityPosition: {x: 0, y: 0}
   onRestart:
+    m_PersistentCalls:
+      m_Calls: []
+  onNextFrame:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1001 &30644695
@@ -653,7 +667,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraSize: 9
+  cameraPosition: {x: 0, y: 0}
+  updateBasePosition: 0
+  spawnPosition: {x: 0, y: 0}
+  gravityPosition: {x: 0, y: 0}
   onRestart:
+    m_PersistentCalls:
+      m_Calls: []
+  onNextFrame:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1001 &67738366
@@ -1415,7 +1436,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraSize: 7.5
+  cameraPosition: {x: 0, y: 0}
+  updateBasePosition: 0
+  spawnPosition: {x: 0, y: 0}
+  gravityPosition: {x: 0, y: 0}
   onRestart:
+    m_PersistentCalls:
+      m_Calls: []
+  onNextFrame:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &162025733
@@ -1434,7 +1462,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &162025734
 Transform:
   m_ObjectHideFlags: 0
@@ -1464,7 +1492,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraSize: 5
+  cameraPosition: {x: 0, y: 0}
+  updateBasePosition: 0
+  spawnPosition: {x: 0, y: 0}
+  gravityPosition: {x: 0, y: 0}
   onRestart:
+    m_PersistentCalls:
+      m_Calls: []
+  onNextFrame:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &169795765
@@ -1512,6 +1547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 1879901266}
   cristalTresh: 3
+  useThisCristal: 0
 --- !u!1001 &197855732
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2397,7 +2433,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraSize: 9
+  cameraPosition: {x: 0, y: 0}
+  updateBasePosition: 0
+  spawnPosition: {x: 0, y: 0}
+  gravityPosition: {x: 0, y: 0}
   onRestart:
+    m_PersistentCalls:
+      m_Calls: []
+  onNextFrame:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &325269079
@@ -2461,7 +2504,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraSize: 9
+  cameraPosition: {x: 0, y: 0}
+  updateBasePosition: 0
+  spawnPosition: {x: 0, y: 0}
+  gravityPosition: {x: 0, y: 0}
   onRestart:
+    m_PersistentCalls:
+      m_Calls: []
+  onNextFrame:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1001 &326859123
@@ -3045,7 +3095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1d5a3da02723814d945602cb21fa178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLvl: credits
+  nextLvl: World2
   time1: 0.2
   time2: 0.4
   image: {fileID: 555186681}
@@ -3389,7 +3439,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraSize: 9
+  cameraPosition: {x: 0, y: 0}
+  updateBasePosition: 0
+  spawnPosition: {x: 0, y: 0}
+  gravityPosition: {x: 0, y: 0}
   onRestart:
+    m_PersistentCalls:
+      m_Calls: []
+  onNextFrame:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1001 &473965400
@@ -3794,7 +3851,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &506283764
 Transform:
   m_ObjectHideFlags: 0
@@ -3825,7 +3882,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraSize: 9
+  cameraPosition: {x: 0, y: 0}
+  updateBasePosition: 0
+  spawnPosition: {x: 0, y: 0}
+  gravityPosition: {x: 0, y: 0}
   onRestart:
+    m_PersistentCalls:
+      m_Calls: []
+  onNextFrame:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &512081943
@@ -3877,7 +3941,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraSize: 9
+  cameraPosition: {x: 0, y: 0}
+  updateBasePosition: 0
+  spawnPosition: {x: 0, y: 0}
+  gravityPosition: {x: 0, y: 0}
   onRestart:
+    m_PersistentCalls:
+      m_Calls: []
+  onNextFrame:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &519420028
@@ -4494,7 +4565,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 575103907}
-  - component: {fileID: 575103908}
   m_Layer: 0
   m_Name: CameraEdge
   m_TagString: Untagged
@@ -4520,18 +4590,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &575103908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 575103906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebce39e956f8c5c42a1a420d4c4da413, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &584157438
 GameObject:
   m_ObjectHideFlags: 0
@@ -5217,8 +5275,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 1, g: 0.30588233, b: 0.33984363, a: 1}
-      maxColor: {r: 0.9607843, g: 0.8826175, b: 0.3215686, a: 1}
+      minColor: {r: 0.8018868, g: 0.12482201, b: 0.13166255, a: 1}
+      maxColor: {r: 0.8773585, g: 0.47825646, b: 0.19450872, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9985,8 +10043,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 1, g: 0.30588233, b: 0.33984363, a: 1}
-      maxColor: {r: 0.9607843, g: 0.8826175, b: 0.3215686, a: 1}
+      minColor: {r: 0.8018868, g: 0.12482201, b: 0.13166255, a: 1}
+      maxColor: {r: 0.8773585, g: 0.47825646, b: 0.19450872, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -21321,8 +21379,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 1, g: 0.30588233, b: 0.33984363, a: 1}
-      maxColor: {r: 0.9607843, g: 0.8826175, b: 0.3215686, a: 1}
+      minColor: {r: 0.8018868, g: 0.12482201, b: 0.13166255, a: 1}
+      maxColor: {r: 0.8773585, g: 0.47825646, b: 0.19450872, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -25917,25 +25975,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 928445184}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &956305723 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9010945001847451670, guid: 06908c2a4fae72a4381b391ab1a73ac1,
-    type: 3}
-  m_PrefabInstance: {fileID: 9010945003063441548}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &956305724
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 956305723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c833b3b93dcb71498963ea8e698f74c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particle: {fileID: 682713863}
 --- !u!1001 &956870619
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27119,7 +27158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1d5a3da02723814d945602cb21fa178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLvl: credits
+  nextLvl: World2
   time1: 0.2
   time2: 0.4
   image: {fileID: 555186681}
@@ -28655,7 +28694,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraSize: 9
+  cameraPosition: {x: 0, y: 0}
+  updateBasePosition: 0
+  spawnPosition: {x: 0, y: 0}
+  gravityPosition: {x: 0, y: 0}
   onRestart:
+    m_PersistentCalls:
+      m_Calls: []
+  onNextFrame:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &1394652902
@@ -28712,7 +28758,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraSize: 9
+  cameraPosition: {x: 0, y: 0}
+  updateBasePosition: 0
+  spawnPosition: {x: 0, y: 0}
+  gravityPosition: {x: 0, y: 0}
   onRestart:
+    m_PersistentCalls:
+      m_Calls: []
+  onNextFrame:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &1414563945
@@ -29587,8 +29640,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 1, g: 0.30588233, b: 0.33984363, a: 1}
-      maxColor: {r: 0.9607843, g: 0.8826175, b: 0.3215686, a: 1}
+      minColor: {r: 0.8018868, g: 0.12482201, b: 0.13166255, a: 1}
+      maxColor: {r: 0.8773585, g: 0.47825646, b: 0.19450872, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -35349,7 +35402,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraSize: 9
+  cameraPosition: {x: 0, y: 0}
+  updateBasePosition: 0
+  spawnPosition: {x: 0, y: 0}
+  gravityPosition: {x: 0, y: 0}
   onRestart:
+    m_PersistentCalls:
+      m_Calls: []
+  onNextFrame:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1001 &1579392965
@@ -36058,7 +36118,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraSize: 5
+  cameraPosition: {x: 0, y: 0}
+  updateBasePosition: 0
+  spawnPosition: {x: 0, y: 0}
+  gravityPosition: {x: 0, y: 0}
   onRestart:
+    m_PersistentCalls:
+      m_Calls: []
+  onNextFrame:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &1654161655
@@ -36503,7 +36570,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraSize: 9
+  cameraPosition: {x: 0, y: 0}
+  updateBasePosition: 0
+  spawnPosition: {x: 0, y: 0}
+  gravityPosition: {x: 0, y: 0}
   onRestart:
+    m_PersistentCalls:
+      m_Calls: []
+  onNextFrame:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1001 &1699684561
@@ -36638,6 +36712,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraSize: 9
+  cameraPosition: {x: 0, y: 0}
+  updateBasePosition: 0
+  spawnPosition: {x: 0, y: 0}
+  gravityPosition: {x: 0, y: 0}
   onRestart:
     m_PersistentCalls:
       m_Calls:
@@ -36652,6 +36730,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  onNextFrame:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1724598923
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37247,7 +37328,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraSize: 9
+  cameraPosition: {x: 0, y: 0}
+  updateBasePosition: 0
+  spawnPosition: {x: 0, y: 0}
+  gravityPosition: {x: 0, y: 0}
   onRestart:
+    m_PersistentCalls:
+      m_Calls: []
+  onNextFrame:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &1769454020
@@ -38761,6 +38849,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdce8bd0c66538e4097d78945c6ce451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reverseDirection: 0
+  deceleration: 2
   resetTime: 1.5
 --- !u!58 &1923240741
 CircleCollider2D:
@@ -40309,7 +40399,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a023d530c6ba4d04dbf40d12b48fc32a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
+  stayAfterFrame: 0
+  wasBeforeFrame: 0
 --- !u!4 &1791550349542338406
 Transform:
   m_ObjectHideFlags: 0
@@ -40488,7 +40579,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a023d530c6ba4d04dbf40d12b48fc32a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
+  stayAfterFrame: 0
+  wasBeforeFrame: 0
 --- !u!4 &1791550349773806338
 Transform:
   m_ObjectHideFlags: 0
@@ -40565,7 +40657,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a023d530c6ba4d04dbf40d12b48fc32a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
+  stayAfterFrame: 0
+  wasBeforeFrame: 0
 --- !u!1 &1791550349773806350
 GameObject:
   m_ObjectHideFlags: 0
@@ -40680,7 +40773,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a023d530c6ba4d04dbf40d12b48fc32a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
+  stayAfterFrame: 0
+  wasBeforeFrame: 0
 --- !u!4 &3246288469584368304
 Transform:
   m_ObjectHideFlags: 0
@@ -40794,7 +40888,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a023d530c6ba4d04dbf40d12b48fc32a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
+  stayAfterFrame: 0
+  wasBeforeFrame: 0
 --- !u!1 &3246288469584368316
 GameObject:
   m_ObjectHideFlags: 0
@@ -41525,7 +41620,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48a12936cbdf9494bbc2630cb94b6cd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
+  stayAfterFrame: 0
+  wasBeforeFrame: 0
   rotationSpeed: 1
 --- !u!212 &5337446017781109976
 SpriteRenderer:
@@ -41914,5 +42010,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1678919591052398065, guid: 06908c2a4fae72a4381b391ab1a73ac1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 06908c2a4fae72a4381b391ab1a73ac1, type: 3}

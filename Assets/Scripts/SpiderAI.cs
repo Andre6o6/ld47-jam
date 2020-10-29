@@ -35,6 +35,7 @@ public class SpiderAI : MonoBehaviour
     {
         controller.enabled = true;
         controller.ResetCharacter();
+        controller.canBeControlled = true;
         controller.gravityScale = 0;
     }
 
