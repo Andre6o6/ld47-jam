@@ -85,14 +85,6 @@ public class FrameManager : MonoBehaviour
 
     public void Update()
     {
-        //
-        if (Input.GetKeyDown(KeyCode.Backspace))
-        {
-            NextFrame();
-            player.canBeControlled = true;
-        }
-        //
-
         if (loading)
         {
             if (!player.canBeControlled)
@@ -135,7 +127,7 @@ public class FrameManager : MonoBehaviour
         //Enable player back
         playerInput.Respawn();
         player.transform.position = spawnPosition;
-        player.SetGravity(currentFrame.GetSpawnGravity());
+        player.SetGravity(GetSpawnGravity());
 
         //TODO enable cristals back on
         foreach (var c in cristals)
@@ -145,5 +137,22 @@ public class FrameManager : MonoBehaviour
 
         //Do some stuff specific to frame
         currentFrame.onRestart?.Invoke();
+    }
+
+    public Vector2 GetSpawnGravity()
+    {
+        Vector2 gravity = gravityPosition - spawnPosition;
+        if (Mathf.Abs(gravity.x) > Mathf.Abs(gravity.y))
+        {
+            gravity.x = Mathf.Sign(gravity.x);
+            gravity.y = 0;
+        }
+        else
+        {
+            gravity.x = 0;
+            gravity.y = Mathf.Sign(gravity.y);
+        }
+
+        return gravity;
     }
 }

@@ -17,5 +17,12 @@ public class Killbox : MonoBehaviour
             collision.GetComponent<Animator>()?.SetBool("Die", true);
             FrameManager.instance.RestartFrame();
         }
+        else
+        {
+            if (edgeKillbox && collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            {
+                collision.gameObject.SetActive(false);
+            }
+        }
     }
 }

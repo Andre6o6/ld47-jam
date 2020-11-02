@@ -11,7 +11,10 @@ public class Quitting : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             //TODO sound pitch shift
-            pauseMenu.SetActive(!pauseMenu.activeInHierarchy);
+            if (pauseMenu != null)
+            {
+                pauseMenu.SetActive(!pauseMenu.activeInHierarchy);
+            }
         }
     }
 

@@ -25,7 +25,7 @@ public class Clouds : MonoBehaviour
         {
             yield return new WaitForSeconds(Random.Range(minTime, maxTime));
             var obj = Instantiate(cloud);
-            obj.transform.position = new Vector2(xPos, Random.Range(yPosMin, yPosMax));
+            obj.transform.position = FrameManager.instance.currentFrame.cameraPosition + new Vector2(xPos, Random.Range(yPosMin, yPosMax));
             obj.transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
             obj.transform.localScale = new Vector3(Random.Range(minScale, maxScale), Random.Range(minScale, maxScale), 1);
 

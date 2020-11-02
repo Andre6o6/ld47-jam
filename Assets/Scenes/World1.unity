@@ -3097,7 +3097,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextLvl: World2
   time1: 0.2
-  time2: 0.4
+  time2: 0.2
   image: {fileID: 555186681}
 --- !u!61 &409003507
 BoxCollider2D:
@@ -27160,7 +27160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextLvl: World2
   time1: 0.2
-  time2: 0.4
+  time2: 0.2
   image: {fileID: 555186681}
 --- !u!61 &1129238780
 BoxCollider2D:
@@ -27859,8 +27859,8 @@ MonoBehaviour:
   - {fileID: 1694622343}
   currentFrame: {fileID: 0}
   restartTime: 1
-  spawnPosition: {x: -0.2, y: 0.68}
-  gravityPosition: {x: 0.18, y: -0.18}
+  spawnPosition: {x: -0.2, y: 0.7}
+  gravityPosition: {x: -0.2, y: -0.29}
   cristals: []
   frameCamera: {fileID: 1224435050}
 --- !u!114 &1224435050

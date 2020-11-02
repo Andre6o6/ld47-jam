@@ -23,23 +23,6 @@ public class Frame : MonoBehaviour
         }
     }
 
-    public Vector2 GetSpawnGravity()
-    {
-        Vector2 gravity = gravityPosition - spawnPosition;
-        if (Mathf.Abs(gravity.x) > Mathf.Abs(gravity.y))
-        {
-            gravity.x = Mathf.Sign(gravity.x);
-            gravity.y = 0;
-        }
-        else
-        {
-            gravity.x = 0;
-            gravity.y = Mathf.Sign(gravity.y);
-        }
-        
-        return gravity;
-    }
-
     private void OnDrawGizmos()
     {
         Vector2 size = new Vector2()

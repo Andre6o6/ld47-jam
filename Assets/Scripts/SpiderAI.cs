@@ -20,6 +20,7 @@ public class SpiderAI : MonoBehaviour
     private float height;
 
     private bool canLeap = true;
+    private bool floating;
 
     private void Awake()
     {
@@ -37,6 +38,10 @@ public class SpiderAI : MonoBehaviour
         controller.ResetCharacter();
         controller.canBeControlled = true;
         controller.gravityScale = 0;
+
+        canLeap = true;
+        floating = false;
+        transform.rotation = Quaternion.identity;
     }
 
     private void Update()
@@ -98,7 +103,9 @@ public class SpiderAI : MonoBehaviour
         controller.transform.Translate(controller.platformNormal * 0.5f);
         anim.SetBool("float", true);
 
+        floating = true;
         yield return new WaitForSeconds(waitTime);
+        floating = false;
 
         //Leap
         Vector2 direction = target.position - transform.position;
@@ -115,7 +122,7 @@ public class SpiderAI : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!canLeap)   //if leaped
+        if (!canLeap && !floating)   //if leaped
         {
             controller.canBeControlled = true;
             controller.gravityScale = 1;
@@ -150,15 +157,13 @@ public class SpiderAI : MonoBehaviour
     }
 
     //FIXME hz why I added that
-    /*private void OnCollisionStay2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        if (!controller.canBeControlled)
+        if (!controller.canBeControlled && !floating)
         {
-            if (collision.gameObject != lastPlatform)
-            {
-                controller.canBeControlled = true;
-                controller.ResetCharacter();
-            }
+            controller.canBeControlled = true;
+            EnableGravity();
+            canLeap = true;
         }
-    }*/
+    }
 }

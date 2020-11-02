@@ -22,11 +22,14 @@ public class NextLvl : MonoBehaviour
     public IEnumerator LoadAfterTime()
     {
         image.SetActive(true);
+
         yield return new WaitForSeconds(time1);
         var obj = FindObjectOfType<CastleSpawn>();
         obj.castleDown.GetComponent<SpriteRenderer>().enabled = false;
         obj.castleUp.GetComponent<SpriteRenderer>().enabled = false;
+
         yield return new WaitForSeconds(time2);
+        Cristal.cristalCount = 0;
         SceneManager.LoadScene(nextLvl);
     }
 }

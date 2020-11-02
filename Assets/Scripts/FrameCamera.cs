@@ -38,6 +38,8 @@ public class FrameCamera : MonoBehaviour
         StartCoroutine(CameraAnimation(currentPosition, position, currentSize, size));
     }
 
+
+
     private IEnumerator CameraAnimation(Vector3 fromPos, Vector3 toPos, float fromSize, float toSize)
     {
         //HACK set z
